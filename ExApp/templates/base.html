@@ -1,0 +1,61 @@
+	
+
+<html>
+  <head>
+    <title>Fullfil</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable({{dict|safe}});
+ 
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 2]);
+
+        var options = {
+          title: 'My Expenses'
+        };
+
+        var chart = new google.visualization.PieChart( 
+          document.getElementById('chart_div'));
+        chart.draw(view, options);
+
+        var selectHandler = function(e) {
+         window.location = data.getValue(chart.getSelection()[0]['row'], 1 );
+        }
+
+        // Add our selection handler.
+        google.visualization.events.addListener(chart, 'select', selectHandler);
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FulFill</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active" ><a href="/home/">Dashboard</a></li>
+      <li ><a href="/addexpense/">New Expense</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      
+      <li><a href="/logout/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<h4> Hi,{{user}} Here's Your Expense Chart </h4>
+
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

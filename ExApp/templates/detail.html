@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+{%load render_table from django_tables2%}
+<head>
+  <title>Fullfil</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+  
+}
+<!-->body  {
+    
+    background-color: black;
+    background: url({{MEDIA_URL}}a1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}<-->
+</style>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FulFill</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li  ><a href="/home/">Dashboard</a></li>
+      <li class="active"><a href="#">Details</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      
+      <li><a href="/logout/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<h4> Expense List Details </h4>
+<br>
+
+{%render_table table%}
+
+</body>
+</html>

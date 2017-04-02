@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Fullfil</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+  
+}
+<!-->body  {
+    
+    background-color: black;
+    background: url({{MEDIA_URL}}a1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}<-->
+</style>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FulFill</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li  ><a href="/home/">Dashboard</a></li>
+      <li class="active"><a href="/addexpense/">New Expense</a></li>
+      
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      
+      <li><a href="/logout/"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<h4> Hi,{{user}} Please Enter your Expense here </h4>
+<br>
+
+{% if stat == 'exadd' %}
+    <h4 class="bg-success"> &nbsp &nbsp  Expense Successfully Added </h4>
+{% endif %}
+  
+{% if stat == 'catadd' %}
+    <h4 class="bg-success"> &nbsp &nbsp  Category  Successfully Added </h4>
+{% endif %}
+{% if stat == 'False' %}
+    <p align='middle' class="bg-danger">Error : {{msg}}</p>
+{% endif %}
+
+<div class="container" >
+      <div class="row">
+          <div class="col-md-6">
+<form action="/addexpense/" method ="post">
+  {% csrf_token %}
+    
+  
+  <b>Category</b> :{{ form1.cat }}<br><br>
+  <b>Amount</b> :{{ form1.Amount }}<br><br>
+  <b>Description</b> :
+  <br>{{ form1.Decription }}   
+<input type="submit" class="btn btn-primary" ,value="Find"> 
+</form>  
+</div>
+<div class="col-md-6">
+   <p style="font-size:150% ; font-family:calibri">
+<form action="/addcat/" method ="post">
+  {% csrf_token %}
+  <b>Add  </b>{{ form2.value }}
+<input type="submit" class="btn btn-primary" ,value="Find"> 
+</form>  
+</div>
+</body>
+</html>
